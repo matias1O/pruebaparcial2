@@ -23,18 +23,11 @@ jobs:
         distribution: 'temurin'
         cache: 'maven'
 
-    # 3. Compilar, ejecutar tests con JaCoCo y enviar métricas a SonarCloud
-    - name: Compilar, Testear y Analizar con SonarQube
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: |
-        mvn clean verify sonar:sonar \
-          -Dsonar.projectKey=matias10 \
-          -Dsonar.organization=matias10 \
-          -Dsonar.host.url=https://sonarcloud.io
+    # 3. Compilar y ejecutar pruebas unitarias con reporte JaCoCo
+    - name: Compilar y Testear con JaCoCo
+      run: mvn clean verify
 
-    # 4. Construir la imagen de Docker para asegurar que el Dockerfile empaquete bien
+    # 4. Construir la imagen de Docker para asegurar que no falle
     - name: Construir Imagen de Docker
       run: |
         docker build -t springboot-app-devops:${{ github.sha }} .
