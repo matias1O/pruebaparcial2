@@ -25,7 +25,7 @@ jobs:
 
     # 3. Compilar y ejecutar pruebas unitarias con reporte JaCoCo
     - name: Compilar y Testear con JaCoCo
-      run: mvn clean verify
+      run: ./mvnw clean verify
 
     # 4. Construir la imagen de Docker para asegurar que no falle
     - name: Construir Imagen de Docker
