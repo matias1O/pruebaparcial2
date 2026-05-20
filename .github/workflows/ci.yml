@@ -32,7 +32,7 @@ jobs:
         mvn clean verify sonar:sonar \
           -Dsonar.projectKey=matias10 \
           -Dsonar.organization=matias10 \
-          -Dsonar.host.url=https://https://sonarcloud.io
+          -Dsonar.host.url=https://sonarcloud.io
 
   
 
